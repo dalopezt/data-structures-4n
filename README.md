@@ -38,7 +38,7 @@ A ```.mp4``` file that shows how Dijkstra's algorithm finds the minimal route fr
 
 **Example**
 
-![Output Dijkstra Example](static/output_dijkstra_example.mp4)
+![Output Dijkstra Example](static/output_dijkstra_example.gif)
 
 ### **How to run**
 Run in the ```01_dijkstra``` folder project folder:
