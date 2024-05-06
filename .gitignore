@@ -1,0 +1,9 @@
+__pycache__
+.vscode
+media
+
+# Specific
+frame.json
+frames.json
+parser.exe
+avl.exe
