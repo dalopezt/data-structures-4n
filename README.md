@@ -15,8 +15,8 @@ A ```.txt``` file that defines:
 
 The format must include:
 - ```W``` for Wall cell
-- ```S``` for Source cell
 - ```A``` for Available cell
+- ```S``` for Source cell
 - ```D``` for Destionation cell
 
 **Example**
