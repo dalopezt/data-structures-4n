@@ -12,6 +12,7 @@ class AVLAnimation(Scene):
             edges_str = f.readlines()
             for edge_str in edges_str:
                 edges.append(eval(edge_str))
-    
+
+        edges.reverse()
         g = Graph(vertices, edges, layout="tree", labels=True, root_vertex=root)
         self.add(g)
