@@ -1,5 +1,7 @@
 #include <cmath>
 #include <iostream>
+#include <fstream>
+#include <vector>
 
 class Node
 {
@@ -140,6 +142,104 @@ class AVLTree
             inorder(node->get_right());
         }
     }
+
+    int tree_size(Node* node)
+    {
+        if (!node) return 0;
+        return tree_size(node->get_left())
+               + 1
+               + tree_size(node->get_right());
+    }
+
+    std::vector<int> get_nodes_value(Node* node)
+    {
+        std::vector<int> r;
+        
+        // If null, doesn't add anything
+        if (!node) return r;
+
+        // Insert left edges
+        std::vector<int> left_nodes = get_nodes_value(node->get_left());
+        r.insert(
+            r.end(), 
+            left_nodes.begin(), 
+            left_nodes.end());
+
+        // Add itself
+        r.push_back(node->get_value());
+
+        // Insert right edges
+        std::vector<int> right_nodes = get_nodes_value(node->get_right());
+        r.insert(
+            r.end(), 
+            right_nodes.begin(), 
+            right_nodes.end());
+
+        return r;
+    }
+
+    std::vector<std::pair<int, int>> get_edges(Node* node)
+    {
+        std::vector<std::pair<int, int>> r;
+        
+        // If null, doesn't add anything
+        if (!node) return r;
+
+        // Insert left edges
+        std::vector<std::pair<int, int>> left_edges = get_edges(node->get_left());
+        r.insert(
+            r.end(), 
+            left_edges.begin(), 
+            left_edges.end());
+        
+        // Insert self edges
+        if (node->get_left())
+        {
+            std::pair<int, int> left;
+            left.first = node->get_value();
+            left.second = node->get_left()->get_value();
+            r.push_back(left);
+        }
+        if (node->get_right())
+        {
+            std::pair<int, int> right;
+            right.first = node->get_value();
+            right.second = node->get_right()->get_value();
+            r.push_back(right);
+        }
+
+        // Insert right edges
+        std::vector<std::pair<int, int>> right_edges = get_edges(node->get_right());
+        r.insert(
+            r.end(), 
+            right_edges.begin(), 
+            right_edges.end());
+        
+        return r;
+    }
+
+    void save()
+    {
+        std::ofstream file("avl.txt");
+        
+        std::vector<int> nodes = get_nodes_value(_root);
+        file << _root->get_value() << "\n";
+        file << "[";
+        for (auto node : nodes)
+        {
+            file << node;
+            if (node == nodes.back()) file << "]\n";
+            else file << ", ";
+        }
+        
+        std::vector<std::pair<int, int>> edges = get_edges(_root);
+        for (auto edge : edges)
+        {
+            file << "(" << edge.first << ", " << edge.second << ")\n";
+        }
+
+        file.close();
+    }
 };
 
 int main(void)
@@ -156,4 +256,5 @@ int main(void)
         tree.insert_value(m);
     }
     tree.inorder(tree.get_root());
+    tree.save();
 }

@@ -116,18 +116,23 @@ Console input of the number of nodes to be inserted, followed by the list of all
 
 **Example**
 ```sh
-5 # Number of nodes
+10 # Number of nodes
 1 # Node 1
-2 # Node 2
-3 # Node 3
-4 # Node 4
-5 # Node 5
+2 # ...
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+10
 ```
 
 The code doesn't provide any checks for bad inputs. Please use positive int values for all the inputs.
 
 ### **Output**
-Console output of inorder traversal with node and height values (from leaves to root).
+Console output of inorder traversal with node and height values (from leaves to root). A ```.png``` file showing the actual AVL Tree after inserting all nodes.
 
 **Example**
 
@@ -136,20 +141,32 @@ Console output of inorder traversal with node and height values (from leaves to 
 PS C:\Users\dalopezt\manim\04_avl> .\run.ps1
 
 # Console input
-Number of nodes: 5
+Number of nodes: 10
 Value of 1 node: 1
 Value of 2 node: 2
 Value of 3 node: 3
 Value of 4 node: 4
 Value of 5 node: 5
+Value of 6 node: 6
+Value of 7 node: 7
+Value of 8 node: 8
+Value of 9 node: 9
+Value of 10 node: 10
 
 # Console output
 {v: 1, h: 1}
-{v: 2, h: 3}
+{v: 2, h: 2}
 {v: 3, h: 1}
-{v: 4, h: 2}
+{v: 4, h: 4}
 {v: 5, h: 1}
+{v: 6, h: 2}
+{v: 7, h: 1}
+{v: 8, h: 3}
+{v: 9, h: 2}
+{v: 10, h: 1}
 ```
+
+![Output Dijkstra Example](static/output_avl_example.png)
 
 ### **How to run**
 Run in the ```04_avl``` folder project folder:
