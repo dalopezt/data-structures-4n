@@ -90,9 +90,12 @@ int eval(const std::string& exp)
 
 int main() 
 {
-    char exp[100];
-    std::cout << "Type message: ";
-    std::cin.getline(exp, 100);
-    std::cout << "Result: " << eval(exp) << "\n";
+    while (true)
+    {
+        char exp[100];
+        std::cout << "Type expression: ";
+        std::cin.getline(exp, 100);
+        std::cout << "Result: " << eval(exp) << "\n";
+    }
     return 0;
 }
